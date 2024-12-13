@@ -6,4 +6,4 @@ class Product:
         self.date = date
     
     def __str__(self):
-        return f"{self.name:<20} {self.price:<10} {self.stock:<10} {self.date:<10}"
+        return f"| {self.name:<20} | {self.price:<10} | {self.stock:<10} | {self.date:<10} {"|":<10}"

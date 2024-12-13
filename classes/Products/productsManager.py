@@ -1,8 +1,9 @@
 from utils.fileManager import FileManager
 from .products import Product
+import time
 
 class ProductsManager: 
-    PRODUCT_FILE = "products.csv"
+    PRODUCT_FILE = "./data/products.csv"
 
     def __init__(self):
         self.products = self.load_products()
@@ -10,7 +11,6 @@ class ProductsManager:
     def load_products(self):
         try:
             file = FileManager().load_file(self.PRODUCT_FILE)
-            header = file[0].strip().split(",")
             products = [line.strip().split(",") for line in file[1:]]
             Object = [Product(product[0], product[1], product[2], product[3]) for product in products]
             return Object
@@ -25,9 +25,18 @@ class ProductsManager:
 
         FileManager().save_file(self.PRODUCT_FILE, data)
 
-    def add_product(self, product):
+    def add_product(self):
+        current_time = time.localtime()
+        name = input("Enter product name: ")
+        price = input("Enter product price: ")
+        stock = input("Enter product stock: ")
+        date = f"{current_time.tm_mday}-{current_time.tm_mon}-{current_time.tm_year}-{current_time.tm_hour}-{current_time.tm_min}-{current_time.tm_sec}"
+
+        product = Product(name, price, stock, date)
+
         self.products.append(product)
         self.save_products()
+        print(f"Product '{name}' added successfully.")
     
     def view_products(self):
         if not self.products:
@@ -39,8 +48,10 @@ class ProductsManager:
                 print(product)
 
     def delete_product(self, name):
+        name = input("Enter product name: ")
         self.products = [product for product in self.products if product.name != name]
         self.save_products()
+        print(f"Product '{name}' deleted successfully.")
 
     def sort_products(self):
         sort_type = input("Trier par : (Name, Price, Stock, Date) : ")
@@ -60,7 +71,7 @@ class ProductsManager:
         self.save_products()
         print("Products sorted successfully.")
     
-    def search_product(self, target):
+    def search_product(self):
         target = input("Enter the name of the product you want to search: ")
         low = 0
         hight = len(self.products) - 1
