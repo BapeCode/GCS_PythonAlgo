@@ -30,12 +30,14 @@ class UsersManager:
         if not self.users:
             print("No users found.")
         else:
-            print(f"{"Username":<20} {"Password":<10} {"Email":<10} {"Group":<10}")
+            print(f"{"Username":<20} {"Password":<50} {"Email":<50} {"Group":<10}")
             print("-" * 50)
             for user in self.users:
                 print(user)
     
-    def delete_user(self, username):
+    def delete_user(self):
+        username = input("Enter username : ")  
+
         self.users = [user for user in self.users if user.username != username]
         self.save_users()
 
@@ -45,14 +47,38 @@ class UsersManager:
         password = hashlib.md5(password.encode()).hexdigest()
 
         for user in self.users:
-            print(user.username, user.email, username)
             if user.username == username or user.email == username:
+
+                print(user.password, password)
                 
                 if user.password == password:
                     print(f"Welcome {user.username}")
-                    return True, user
+                    return user
                 else:
                     print("Your identifiant or password is incorrect.")
         
-        
-        
+    def register(self):
+        username = input("Enter Username: ")
+        password = input("Enter password: ")
+        email = input("Enter email: ")
+
+        password = hashlib.md5(password.encode()).hexdigest()
+
+        user = Users(username, password, email, "member")
+        self.users.append(user)
+        self.save_users()
+        print(f"User '{username}' added successfully.")
+
+    def modify_user_group(self):
+        username = input("Enter username: ")
+        group = input("Enter group: ")
+
+        for user in self.users:
+            if user.username == username:
+                user.group = group
+                self.save_users()
+                print(f"User '{username}' group modified successfully.")
+                break 
+
+    def __str__(self):
+        return f"{self.username:<20} {self.email:<20} {self.password:<20} {self.group:<20}"

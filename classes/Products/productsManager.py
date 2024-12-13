@@ -1,6 +1,7 @@
 from utils.fileManager import FileManager
 from .products import Product
 import time
+import termcolor
 
 class ProductsManager: 
     PRODUCT_FILE = "./data/products.csv"
@@ -42,12 +43,14 @@ class ProductsManager:
         if not self.products:
             print("No products found.")
         else:
-            print(f"{"Name":<20} {"Price":<10} {"Stock":<10} {"Date":<10}")
-            print("-" * 50)
+            text = termcolor.colored(f"{'Name':<20} {'Price':<15} {'Stock':<15} {'Date':<15}", "blue")
+            line = termcolor.colored("-" * 70, "light_blue")
+            print(text)
+            print(line)
             for product in self.products:
                 print(product)
 
-    def delete_product(self, name):
+    def delete_product(self):
         name = input("Enter product name: ")
         self.products = [product for product in self.products if product.name != name]
         self.save_products()
@@ -99,22 +102,3 @@ class ProductsManager:
                 low = mid + 1
 
         return None
-    
-    def search_sequentielle_product(self):
-        target = input("Enter the name of the product you want to search ")
-        results = []
-        print("Searching...")
-
-        for product in self.products: 
-            if product.name.lower() == target.lower():
-                results = [product for product in self.products if product.name.lower() == target.lower()]
-        
-        for result in results:
-            print(f"{result}")
-
-        if len(results) == 0:
-            print("No product found")
-        
-        
-
-
