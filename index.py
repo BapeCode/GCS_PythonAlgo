@@ -9,7 +9,7 @@ class GestionixApp:
     def __init__(self):
         self.products_manager = ProductsManager()
         self.users_manager = UsersManager()
-        self.connected = False
+        self.connected = True
         self.user_connected = None
 
     def display_menu(self):
@@ -20,7 +20,8 @@ class GestionixApp:
             print("3. Delete Product")
             print("4. Sort the data base")
             print("5. Research a product")
-            print("6. Exit")
+            print("6. Research a product(sequential)")
+            print("7. Exit")
 
             return input("Enter your choice :")
         else:
@@ -49,6 +50,8 @@ class GestionixApp:
                 elif choise == "5":
                     self.products_manager.search_product()
                 elif choise == "6":
+                    self.products_manager.search_sequentielle_product()
+                elif choise == "7":
                     print("Exiting...")
                     break
             else:

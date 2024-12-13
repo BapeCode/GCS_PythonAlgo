@@ -99,3 +99,22 @@ class ProductsManager:
                 low = mid + 1
 
         return None
+    
+    def search_sequentielle_product(self):
+        target = input("Enter the name of the product you want to search ")
+        results = []
+        print("Searching...")
+
+        for product in self.products: 
+            if product.name.lower() == target.lower():
+                results = [product for product in self.products if product.name.lower() == target.lower()]
+        
+        for result in results:
+            print(f"{result}")
+
+        if len(results) == 0:
+            print("No product found")
+        
+        
+
+
