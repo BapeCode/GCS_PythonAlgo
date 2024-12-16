@@ -2,14 +2,15 @@ from utils.fileManager import FileManager
 from .products import Product
 import time
 import termcolor
+import hashlib
 
 class ProductsManager: 
     def __init__(self):
         self.products = []
         self.PRODUCT_FILE = None
 
-    def load_products(self, users_files):
-        self.PRODUCT_FILE = "./data/" + users_files
+    def load_products(self, username):
+        self.PRODUCT_FILE = "./data/" + hashlib.md5(username.encode()).hexdigest() + "_products.csv"
         try:
             file = FileManager().load_file(self.PRODUCT_FILE)
             products = [line.strip().split(",") for line in file[1:]]

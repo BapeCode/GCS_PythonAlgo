@@ -61,6 +61,7 @@ class GestionixApp:
                     os.system('clear')
                     self.products_manager.search_product()
                 elif choise == "6":
+                    self.users_manager.reload_data()
                     print("Exiting...")
                     break
 
@@ -78,13 +79,15 @@ class GestionixApp:
                 if choise == "1":
                     self.user_connected= self.users_manager.login()
                     if (self.user_connected):
-                        #os.system('clear')
+                        self.users_manager.reload_data()
+                        os.system('clear')
                         self.connected = True
-                        self.products_manager.load_products(self.user_connected.products)
+                        self.products_manager.load_products(self.user_connected.username)
                 elif choise == "2":
                     os.system('clear')
                     self.users_manager.register()
                 elif choise == "3":
+                    self.users_manager.reload_data()
                     print("Exiting...")
                     break
 

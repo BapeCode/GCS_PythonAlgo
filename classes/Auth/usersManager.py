@@ -13,7 +13,7 @@ class UsersManager:
         try:
             file = FileManager().load_file(self.USERS_FILE)
             data = [line.strip().split(",") for line in file[1:]]
-            Object = [Users(user[0], user[1], user[2], user[3], user[4]) for user in data]
+            Object = [Users(user[0], user[1], user[2], user[3]) for user in data]
             return Object
         except FileNotFoundError:
             return []
@@ -62,7 +62,7 @@ class UsersManager:
 
         password = hashlib.md5(password.encode()).hexdigest()
 
-        user = Users(username, password, email, "member", f"products_{username}.csv")
+        user = Users(username, password, email, "member")
         self.users.append(user)
         self.save_users()
         print(f"User '{username}' added successfully.")
@@ -80,3 +80,8 @@ class UsersManager:
 
     def __str__(self):
         return f"{self.username:<20} {self.email:<20} {self.password:<20} {self.group:<20}"
+
+    def reload_data(self):
+        users = [user for user in self.users]
+        FileManager().clean_folder(users)
+
