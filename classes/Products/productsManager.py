@@ -6,15 +6,14 @@ import termcolor
 class ProductsManager: 
     def __init__(self):
         self.products = []
-        self.PRODUCT_FILE = ""
+        self.PRODUCT_FILE = None
 
     def load_products(self, users_files):
+        self.PRODUCT_FILE = "./data/" + users_files
         try:
-            file = FileManager().load_file(users_files)
+            file = FileManager().load_file(self.PRODUCT_FILE)
             products = [line.strip().split(",") for line in file[1:]]
             Object = [Product(product[0], product[1], product[2], product[3]) for product in products]
-            self.PRODUCT_FILE = users_files
-            print(self.PRODUCT_FILE)
             self.products = Object
         except FileNotFoundError:
             return []
@@ -24,6 +23,7 @@ class ProductsManager:
             ['Name', "Price", "Stock", "Date"],
             *[[product.name, product.price, product.stock, product.date] for product in self.products]
         ]
+        print(self.PRODUCT_FILE)
 
         FileManager().save_file(self.PRODUCT_FILE, data)
 

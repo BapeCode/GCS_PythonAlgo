@@ -78,7 +78,7 @@ class GestionixApp:
                 if choise == "1":
                     self.user_connected= self.users_manager.login()
                     if (self.user_connected):
-                        os.system('clear')
+                        #os.system('clear')
                         self.connected = True
                         self.products_manager.load_products(self.user_connected.products)
                 elif choise == "2":

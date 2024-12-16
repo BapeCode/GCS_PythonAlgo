@@ -49,8 +49,6 @@ class UsersManager:
         for user in self.users:
             if user.username == username or user.email == username:
 
-                print(user.password, password)
-                
                 if user.password == password:
                     print(f"Welcome {user.username}")
                     return user
@@ -64,7 +62,7 @@ class UsersManager:
 
         password = hashlib.md5(password.encode()).hexdigest()
 
-        user = Users(username, password, email, "member")
+        user = Users(username, password, email, "member", f"products_{username}.csv")
         self.users.append(user)
         self.save_users()
         print(f"User '{username}' added successfully.")
