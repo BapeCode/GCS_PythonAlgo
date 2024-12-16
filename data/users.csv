@@ -1,2 +1,2 @@
-Username,Password,Email,Group
-Mathieu,21232f297a57a5a743894a0e4a801fc3,mathieu@example.com,admin
+Username,Password,Email,Group,Products
+Mathieu,21232f297a57a5a743894a0e4a801fc3,mathieu@example.com,admin,products_mathieu.csv

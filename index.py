@@ -80,6 +80,7 @@ class GestionixApp:
                     if (self.user_connected):
                         os.system('clear')
                         self.connected = True
+                        self.products_manager.load_products(self.user_connected.products)
                 elif choise == "2":
                     os.system('clear')
                     self.users_manager.register()

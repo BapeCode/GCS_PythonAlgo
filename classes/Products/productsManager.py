@@ -4,17 +4,18 @@ import time
 import termcolor
 
 class ProductsManager: 
-    PRODUCT_FILE = "./data/products.csv"
-
     def __init__(self):
-        self.products = self.load_products()
+        self.products = []
+        self.PRODUCT_FILE = ""
 
-    def load_products(self):
+    def load_products(self, users_files):
         try:
-            file = FileManager().load_file(self.PRODUCT_FILE)
+            file = FileManager().load_file(users_files)
             products = [line.strip().split(",") for line in file[1:]]
             Object = [Product(product[0], product[1], product[2], product[3]) for product in products]
-            return Object
+            self.PRODUCT_FILE = users_files
+            print(self.PRODUCT_FILE)
+            self.products = Object
         except FileNotFoundError:
             return []
         

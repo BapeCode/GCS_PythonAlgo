@@ -13,7 +13,7 @@ class UsersManager:
         try:
             file = FileManager().load_file(self.USERS_FILE)
             data = [line.strip().split(",") for line in file[1:]]
-            Object = [Users(user[0], user[1], user[2], user[3]) for user in data]
+            Object = [Users(user[0], user[1], user[2], user[3], user[4]) for user in data]
             return Object
         except FileNotFoundError:
             return []

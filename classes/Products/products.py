@@ -1,3 +1,5 @@
+import termcolor
+
 class Product:
     def __init__(self, name, price, stock, date):
         self.name = name
@@ -6,4 +8,5 @@ class Product:
         self.date = date
     
     def __str__(self):
-        return f"| {self.name:<20} | {self.price:<10} | {self.stock:<10} | {self.date:<10} {"|":<10}"
+        name = termcolor.colored(f"{self.name:<20}", "red")
+        return f"| {name} | {self.price:<10}€ | {self.stock:<10} | {self.date:<10}"
