@@ -54,6 +54,12 @@ class UsersManager:
                     return user
                 else:
                     print("Your identifiant or password is incorrect.")
+
+    def verify_password(self, password):
+        self.password = password
+        with open ('./data/rockyou_md5.txt', mode ='r', encoding='UTF-8') as file: 
+            common_passwords = [line.strip() for line in file]
+            return self.password in common_passwords 
         
     def register(self):
         username = input("Enter Username: ")
@@ -61,7 +67,12 @@ class UsersManager:
         email = input("Enter email: ")
 
         password = hashlib.md5(password.encode()).hexdigest()
+        self.verify_password(password)
 
+        while self.verify_password(password):
+            print("Password compromised. Try again.")
+            password = input("Enter password: ").lower()
+            password = hashlib.md5(password.encode()).hexdigest()
         user = Users(username, password, email, "member")
         self.users.append(user)
         self.save_users()
