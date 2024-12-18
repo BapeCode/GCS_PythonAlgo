@@ -120,7 +120,5 @@ class UsersManager:
     def __str__(self):
         return f"{self.username:<20} {self.email:<20} {self.password:<20} {self.group:<20}"
 
-    def reload_data(self):
-        users = [user for user in self.users]
-        FileManager().clean_folder(users)
+   
 

@@ -3,6 +3,7 @@ from classes.Products.products import Product
 from classes.Auth.usersManager import UsersManager
 import os
 import termcolor
+import pandas as pd
 
 class GestionixApp:
 
@@ -47,7 +48,7 @@ class GestionixApp:
             if self.connected:
                 if choise == "1":
                     os.system('clear')
-                    self.products_manager.add_product()
+                    self.products_manager.add_product(self.user_connected)
                 elif choise == "2":
                     os.system('clear')
                     self.products_manager.view_products()
@@ -61,7 +62,6 @@ class GestionixApp:
                     os.system('clear')
                     self.products_manager.search_product()
                 elif choise == "6":
-                    self.users_manager.reload_data()
                     print("Exiting...")
                     break
 
@@ -79,7 +79,6 @@ class GestionixApp:
                 if choise == "1":
                     self.user_connected= self.users_manager.login()
                     if (self.user_connected):
-                        self.users_manager.reload_data()
                         os.system('clear')
                         self.connected = True
                         self.products_manager.load_products(self.user_connected.username)
@@ -87,7 +86,6 @@ class GestionixApp:
                     os.system('clear')
                     self.users_manager.register()
                 elif choise == "3":
-                    self.users_manager.reload_data()
                     print("Exiting...")
                     break
 

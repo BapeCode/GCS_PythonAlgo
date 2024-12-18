@@ -3,6 +3,7 @@ from .products import Product
 import time
 import termcolor
 import hashlib
+import pandas as pd
 
 class ProductsManager: 
     def __init__(self):
@@ -10,32 +11,58 @@ class ProductsManager:
         self.PRODUCT_FILE = None
 
     def load_products(self, username):
-        self.PRODUCT_FILE = "./data/" + hashlib.md5(username.encode()).hexdigest() + "_products.csv"
+        self.PRODUCT_FILE = "./data/products.csv"
         try:
-            file = FileManager().load_file(self.PRODUCT_FILE)
-            products = [line.strip().split(",") for line in file[1:]]
-            Object = [Product(product[0], product[1], product[2], product[3]) for product in products]
-            self.products = Object
+            
+            df = pd.read_csv(self.PRODUCT_FILE)
+        
+            filtered_df = df[df['Owner'] == username]
+
+            self.products = [
+            Product(row['id'], row['name'], row['category'], row['price'], row['quantity']) 
+            for _, row in filtered_df.iterrows()
+            ]
+            return self.products
+
         except FileNotFoundError:
+
             return []
         
     def save_products(self):
-        data = [
-            ['Name', "Price", "Stock", "Date"],
-            *[[product.name, product.price, product.stock, product.date] for product in self.products]
-        ]
-        print(self.PRODUCT_FILE)
+        try:
+            
+            try:
+                file = FileManager().load_file(self.PRODUCT_FILE)
+                existing_products = [line.strip().split(",") for line in file[1:]]  
+            except FileNotFoundError:
+                existing_products = []
 
-        FileManager().save_file(self.PRODUCT_FILE, data)
+            new_products = [
+                [product.name, product.price, product.stock, product.owner, product.date] for product in self.products
+            ]
+            combined_products = [
+                product for product in existing_products if product[3] != self.products[0].owner  
+            ]
 
-    def add_product(self):
+            combined_products.extend(new_products)  
+           
+            final_data = [["Name", "Price", "Stock", "Owner", "Date"]]
+            final_data.extend(combined_products)
+
+            FileManager().save_file(self.PRODUCT_FILE, final_data)
+            print("Products saved successfully.")
+        except Exception as e:
+            print(f"An error occurred while saving products: {e}")
+
+    def add_product(self, users):
         current_time = time.localtime()
         name = input("Enter product name: ")
         price = input("Enter product price: ")
         stock = input("Enter product stock: ")
+        owner = users.username
         date = f"{current_time.tm_mday}-{current_time.tm_mon}-{current_time.tm_year}-{current_time.tm_hour}-{current_time.tm_min}-{current_time.tm_sec}"
 
-        product = Product(name, price, stock, date)
+        product = Product(name, price, stock, owner, date)
 
         self.products.append(product)
         self.save_products()
@@ -45,7 +72,7 @@ class ProductsManager:
         if not self.products:
             print("No products found.")
         else:
-            text = termcolor.colored(f"{'Name':<20} {'Price':<15} {'Stock':<15} {'Date':<15}", "blue")
+            text = termcolor.colored(f"{'Name':<20} {'Price':<15} {'Stock':<15} {'Owner':<15} {'Date':<15}", "blue")
             line = termcolor.colored("-" * 70, "light_blue")
             print(text)
             print(line)
