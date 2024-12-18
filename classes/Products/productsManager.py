@@ -86,48 +86,135 @@ class ProductsManager:
         print(f"Product '{name}' deleted successfully.")
 
     def sort_products(self):
-        sort_type = input("Trier par : (Name, Price, Stock, Date) : ")
+        print("Sort by:")
+        print("1. Name")
+        print("2. Price")
+        print("3. Stock")
+        print("4. Date")
 
-        if sort_type == "Name":
-            self.products.sort(key=lambda product: product.name)
-        elif sort_type == "Price":
-            self.products.sort(key=lambda product: product.price)
-        elif sort_type == "Stock":
-            self.products.sort(key=lambda product: product.stock)
-        elif sort_type == "Date":
-            self.products.sort(key=lambda product: product.date)
+        choice = input("Enter your choice (1-4): ")
+        sort_type = None
+
+        if choice == "1":
+            sort_type = "Name"
+        elif choice == "2":
+            sort_type = "Price"
+        elif choice == "3":
+            sort_type = "Stock"
+        elif choice == "4":
+            search_csort_typeolumn = "Date"
         else:
+            print("Invalid choice.")
+            return
+        
+        valid_columns = {"Name": "Name", "Price": "Price", "Stock": "Stock", "Date": "Date"}
+        
+        if sort_type not in valid_columns:
             print("Invalid sort type")
             return
+        
+        try: 
+            
+            df = pd.DataFrame([{
+            "Name": product.name,
+            "Price": product.price,
+            "Stock": product.stock,
+            "Owner": product.owner,
+            "Date": product.date
+                } for product in self.products])
 
-        self.save_products()
-        print("Products sorted successfully.")
+            if df.empty:
+                print("No products to sort.")
+                return
+            
+            # Handle sorting logic
+            if sort_type in valid_columns:
+                # Ask for ascending or descending order
+                order = input("Ascending or descending order ? (asc/desc) : ").lower()
+                if order == "asc":
+                    ascending = True
+                elif order == "desc": 
+                    ascending = False
+                else: 
+                    print("Invalid order. Defaulting to ascending.")
+                    ascending = True
+
+                # Sort the DataFrame
+                sorted_products = df.sort_values(by=valid_columns[sort_type], ascending=ascending)
+
+                # Print the sorted DataFrame
+                print(termcolor.colored(f"{'Name':<20} {'Price':<15} {'Stock':<15} {'Owner':<15} {'Date':<15}", "blue"))
+                print(termcolor.colored("-" * 70, "light_blue"))
+                for _, row in sorted_products.iterrows():
+                    print(f"{row['Name']:<20} {row['Price']:<15} {row['Stock']:<15} {row['Owner']:<15} {row['Date']:<15}")
+
+        except Exception as e:
+            print(f"An error occurred while sorting products: {e}")
+
+
     
     def search_product(self):
-        target = input("Enter the name of the product you want to search: ")
-        low = 0
-        hight = len(self.products) - 1
+        print("Search by:")
+        print("1. Name")
+        print("2. Price")
+        print("3. Stock")
+        print("4. Date")
+        
+        choice = input("Enter your choice (1-4): ")
+        search_column = None
 
-        while low <= hight:
-            mid = (low + hight) // 2
-            mid_product = self.products[mid]
+        if choice == "1":
+            search_column = "Name"
+        elif choice == "2":
+            search_column = "Price"
+        elif choice == "3":
+            search_column = "Stock"
+        elif choice == "4":
+            search_column = "Date"
+        else:
+            print("Invalid choice.")
+            return
+        
+        search_query = input(f"Enter the value to search in {search_column}: ").strip()
+        
+        try:
             
+            df = pd.DataFrame([{
+                "Name": product.name,
+                "Price": product.price,
+                "Stock": product.stock,
+                "Owner": product.owner,
+                "Date": product.date
+            } for product in self.products])
 
-            if mid_product.name == target:
-                print(f"{"Name":<20} {"Price":<10} {"Stock":<10} {"Date":<10}")
-                print("-" * 50)
-                return print(f"{mid_product}")
-            elif mid_product.name.lower().startswith(target.lower()):
-                print(f"{"Name":<20} {"Price":<10} {"Stock":<10} {"Date":<10}")
-                print("-" * 50)
-                results = [product for product in self.products if product.name.lower().startswith(target.lower())]
-                for result in results:
-                    print(f"{result}")
-
+            if df.empty:
+                print("No products available to search.")
                 return
-            elif target < mid_product.name:
-                hight = mid - 1
-            else: 
-                low = mid + 1
+            
+            
+            if search_column in ["Name", "Date"]:
+                
+                matches = df[df[search_column].str.contains(search_query, case=False, na=False)]
+            elif search_column in ["Price", "Stock"]:
+                
+                try:
+                    search_value = float(search_query)
+                    matches = df[df[search_column] == search_value]
+                except ValueError:
+                    print(f"Invalid input for {search_column}. Please enter a number.")
+                    return
+            else:
+                print("Invalid search column.")
+                return
+            
+            
+            if matches.empty:
+                print("No matching products found.")
+            else:
+                print(termcolor.colored(f"{'Name':<20} {'Price':<15} {'Stock':<15} {'Owner':<15} {'Date':<15}", "blue"))
+                print(termcolor.colored("-" * 70, "light_blue"))
+                for _, row in matches.iterrows():
+                    print(f"{row['Name']:<20} {row['Price']:<15} {row['Stock']:<15} {row['Owner']:<15} {row['Date']:<15}")
 
-        return None
+        except Exception as e:
+            print(f"An error occurred while searching for the product: {e}")

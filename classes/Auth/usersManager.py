@@ -90,13 +90,12 @@ class UsersManager:
         while True:
             password = input("Enter password: ")
 
-            
-            if self.verify_password_hibp(password):
-                print("Password found in public breaches (HIBP). Try a different one.")
-                continue
-
             if self.verify_password_local(password):
                 print("Password is too common (rockyou). Try a different one.")
+                continue
+
+            if self.verify_password_hibp(password):
+                print("Password found in public breaches (HIBP). Try a different one.")
                 continue
 
         hashed_password = hashlib.md5(password.encode()).hexdigest()
