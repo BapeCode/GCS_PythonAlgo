@@ -19,7 +19,7 @@ class ProductsManager:
             filtered_df = df[df['Owner'] == username]
 
             self.products = [
-            Product(row['id'], row['name'], row['category'], row['price'], row['quantity']) 
+            Product(row['Name'], row['Price'], row['Stock'], row['Owner'], row['Date']) 
             for _, row in filtered_df.iterrows()
             ]
             return self.products
