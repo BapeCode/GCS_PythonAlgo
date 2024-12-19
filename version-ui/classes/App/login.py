@@ -15,7 +15,6 @@ class LoginWindows(QMainWindow):
     def login(self):
         username = self.ui.username_line.text()
         password = self.ui.password_line.text()
-        print(username, password)
 
         if (username == "" or password == ""):
             self.ui.message.setText("Please fill all fields")
