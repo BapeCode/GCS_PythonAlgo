@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>Ui_LoginWindow</class>
+ <widget class="QMainWindow" name="Ui_LoginWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -64,7 +64,7 @@ QLineEdit {
       <property name="sizeHint" stdset="0">
        <size>
         <width>20</width>
-        <height>75</height>
+        <height>68</height>
        </size>
       </property>
      </spacer>
@@ -76,7 +76,7 @@ QLineEdit {
       </property>
       <property name="sizeHint" stdset="0">
        <size>
-        <width>75</width>
+        <width>74</width>
         <height>20</height>
        </size>
       </property>
@@ -89,7 +89,7 @@ QLineEdit {
       </property>
       <property name="sizeHint" stdset="0">
        <size>
-        <width>75</width>
+        <width>74</width>
         <height>20</height>
        </size>
       </property>
@@ -103,7 +103,7 @@ QLineEdit {
       <property name="sizeHint" stdset="0">
        <size>
         <width>20</width>
-        <height>75</height>
+        <height>69</height>
        </size>
       </property>
      </spacer>
@@ -118,46 +118,20 @@ QLineEdit {
       </property>
       <layout class="QGridLayout" name="gridLayout">
        <property name="leftMargin">
-        <number>0</number>
+        <number>5</number>
        </property>
        <property name="topMargin">
-        <number>0</number>
+        <number>5</number>
        </property>
        <property name="rightMargin">
-        <number>0</number>
+        <number>5</number>
        </property>
        <property name="bottomMargin">
-        <number>0</number>
+        <number>5</number>
        </property>
        <property name="horizontalSpacing">
-        <number>-1</number>
+        <number>6</number>
        </property>
-       <item row="0" column="1">
-        <spacer name="verticalSpacer_2">
-         <property name="orientation">
-          <enum>Qt::Orientation::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>88</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="1" column="0">
-        <spacer name="horizontalSpacer">
-         <property name="orientation">
-          <enum>Qt::Orientation::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>110</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
        <item row="1" column="1">
         <layout class="QVBoxLayout" name="verticalLayout_4">
          <item>
@@ -288,7 +262,33 @@ QLineEdit {
          <property name="sizeHint" stdset="0">
           <size>
            <width>20</width>
-           <height>88</height>
+           <height>90</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="0" column="1">
+        <spacer name="verticalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>89</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="1" column="0">
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Orientation::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>110</width>
+           <height>20</height>
           </size>
          </property>
         </spacer>

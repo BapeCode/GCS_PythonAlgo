@@ -15,9 +15,9 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QGridLayout, QLabel, QLineEdit,
-    QMainWindow, QPushButton, QSizePolicy, QSpacerItem,
-    QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QApplication, QFrame, QGridLayout, QLabel,
+    QLineEdit, QMainWindow, QPushButton, QSizePolicy,
+    QSpacerItem, QVBoxLayout, QWidget)
 
 class Ui_RegisterWindow(object):
     def setupUi(self, Register):
@@ -80,6 +80,7 @@ class Ui_RegisterWindow(object):
         self.widget.setMinimumSize(QSize(450, 450))
         font = QFont()
         self.widget.setFont(font)
+        self.widget.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
         self.gridLayout_2 = QGridLayout(self.widget)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
         self.verticalLayout_7 = QVBoxLayout()
@@ -181,6 +182,21 @@ class Ui_RegisterWindow(object):
 
         self.gridLayout_2.addItem(self.verticalSpacer_3, 0, 1, 1, 1)
 
+        self.frame = QFrame(self.widget)
+        self.frame.setObjectName(u"frame")
+        self.frame.setStyleSheet(u"border:none")
+        self.frame.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame.setFrameShadow(QFrame.Shadow.Raised)
+        self.close = QWidget(self.frame)
+        self.close.setObjectName(u"close")
+        self.close.setGeometry(QRect(70, 0, 24, 24))
+        self.close.setMinimumSize(QSize(24, 24))
+        self.close.setMaximumSize(QSize(24, 24))
+        self.close.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        self.close.setStyleSheet(u"border-image: url(static/close.png);")
+
+        self.gridLayout_2.addWidget(self.frame, 0, 2, 1, 1)
+
 
         self.gridLayout.addWidget(self.widget, 1, 1, 1, 1)
 
@@ -200,7 +216,7 @@ class Ui_RegisterWindow(object):
     # setupUi
 
     def retranslateUi(self, Register):
-        Register.setWindowTitle(QCoreApplication.translate("Register", u"Gestionix - Register", None))
+        Register.setWindowTitle(QCoreApplication.translate("Register", u"Register", None))
         self.title.setText(QCoreApplication.translate("Register", u"Register", None))
         self.label_8.setText(QCoreApplication.translate("Register", u"Email", None))
         self.emailButton.setPlaceholderText(QCoreApplication.translate("Register", u"email@example.com", None))

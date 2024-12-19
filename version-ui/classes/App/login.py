@@ -9,3 +9,8 @@ class LoginWindows(QMainWindow):
         super().__init__()
         self.ui = Ui_LoginWindow()
         self.ui.setupUi(self)
+
+        self.ui.close.clicked.connect(self.close)
+
+    def close(self):
+        self.close()

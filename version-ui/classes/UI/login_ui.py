@@ -15,9 +15,9 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QGridLayout, QLabel, QLineEdit,
-    QMainWindow, QPushButton, QSizePolicy, QSpacerItem,
-    QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QApplication, QFrame, QGridLayout, QLabel,
+    QLineEdit, QMainWindow, QPushButton, QSizePolicy,
+    QSpacerItem, QVBoxLayout, QWidget)
 
 class Ui_LoginWindow(object):
     def setupUi(self, MainWindow):
@@ -67,37 +67,29 @@ class Ui_LoginWindow(object):
         self.centralwidget.setObjectName(u"centralwidget")
         self.gridLayout_2 = QGridLayout(self.centralwidget)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
-        self.verticalSpacer_4 = QSpacerItem(20, 75, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+        self.verticalSpacer_4 = QSpacerItem(20, 65, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
         self.gridLayout_2.addItem(self.verticalSpacer_4, 2, 1, 1, 1)
 
-        self.horizontalSpacer_3 = QSpacerItem(75, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        self.horizontalSpacer_3 = QSpacerItem(74, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.gridLayout_2.addItem(self.horizontalSpacer_3, 1, 0, 1, 1)
 
-        self.horizontalSpacer_4 = QSpacerItem(75, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        self.horizontalSpacer_4 = QSpacerItem(74, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.gridLayout_2.addItem(self.horizontalSpacer_4, 1, 2, 1, 1)
 
-        self.verticalSpacer_3 = QSpacerItem(20, 75, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+        self.verticalSpacer_3 = QSpacerItem(20, 66, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
         self.gridLayout_2.addItem(self.verticalSpacer_3, 0, 1, 1, 1)
 
         self.widget = QWidget(self.centralwidget)
         self.widget.setObjectName(u"widget")
-        self.widget.setMinimumSize(QSize(450, 450))
+        self.widget.setMinimumSize(QSize(400, 400))
         self.gridLayout = QGridLayout(self.widget)
         self.gridLayout.setObjectName(u"gridLayout")
-        self.gridLayout.setHorizontalSpacing(-1)
-        self.gridLayout.setContentsMargins(0, 0, 0, 0)
-        self.verticalSpacer_2 = QSpacerItem(20, 88, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
-
-        self.gridLayout.addItem(self.verticalSpacer_2, 0, 1, 1, 1)
-
-        self.horizontalSpacer = QSpacerItem(110, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
-
-        self.gridLayout.addItem(self.horizontalSpacer, 1, 0, 1, 1)
-
+        self.gridLayout.setHorizontalSpacing(6)
+        self.gridLayout.setContentsMargins(5, 5, 5, 5)
         self.verticalLayout_4 = QVBoxLayout()
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.label_4 = QLabel(self.widget)
@@ -170,9 +162,32 @@ class Ui_LoginWindow(object):
 
         self.gridLayout.addItem(self.horizontalSpacer_2, 1, 2, 1, 1)
 
-        self.verticalSpacer = QSpacerItem(20, 88, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+        self.frame = QFrame(self.widget)
+        self.frame.setObjectName(u"frame")
+        self.frame.setStyleSheet(u"border: none")
+        self.frame.setFrameShape(QFrame.Shape.StyledPanel)
+        self.frame.setFrameShadow(QFrame.Shadow.Raised)
+        self.close = QWidget(self.frame)
+        self.close.setObjectName(u"close")
+        self.close.setGeometry(QRect(80, 10, 24, 24))
+        self.close.setMinimumSize(QSize(24, 24))
+        self.close.setMaximumSize(QSize(24, 24))
+        self.close.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        self.close.setStyleSheet(u"border-image: url(static/close.png);")
+
+        self.gridLayout.addWidget(self.frame, 0, 2, 1, 1)
+
+        self.verticalSpacer = QSpacerItem(20, 90, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
         self.gridLayout.addItem(self.verticalSpacer, 2, 1, 1, 1)
+
+        self.verticalSpacer_2 = QSpacerItem(20, 89, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.gridLayout.addItem(self.verticalSpacer_2, 0, 1, 1, 1)
+
+        self.horizontalSpacer = QSpacerItem(110, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.gridLayout.addItem(self.horizontalSpacer, 1, 0, 1, 1)
 
 
         self.gridLayout_2.addWidget(self.widget, 1, 1, 1, 1)
@@ -185,7 +200,7 @@ class Ui_LoginWindow(object):
     # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Gestionix - Login", None))
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Login", None))
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"Login", None))
         self.label_5.setText(QCoreApplication.translate("MainWindow", u"Username", None))
         self.lineEdit_3.setPlaceholderText(QCoreApplication.translate("MainWindow", u"email@example.com", None))

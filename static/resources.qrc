@@ -2,6 +2,9 @@
   <qresource prefix="user">
     <file>user.png</file>
   </qresource>
+  <qresource prefix="close">
+    <file>close.png</file>
+  </qresource>
   <qresource prefix="background">
     <file>background.jpg</file>
   </qresource>

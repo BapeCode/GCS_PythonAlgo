@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Register</class>
- <widget class="QMainWindow" name="Register">
+ <class>Ui_RegisterWindow</class>
+ <widget class="QMainWindow" name="Ui_RegisterWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -92,6 +92,9 @@ QLineEdit {
       </property>
       <property name="font">
        <font/>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <layout class="QGridLayout" name="gridLayout_2">
        <item row="1" column="1">
@@ -309,6 +312,8 @@ QLineEdit {
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="../static/resources.qrc"/>
+ </resources>
  <connections/>
 </ui>
