@@ -41,9 +41,7 @@ class UsersManager:
         self.users = [user for user in self.users if user.username != username]
         self.save_users()
 
-    def login(self):
-        username = input("Enter Username or Email: ")
-        password = input("Enter password: ")
+    def login(self, username, password):
         password = hashlib.md5(password.encode()).hexdigest()
 
         for user in self.users:

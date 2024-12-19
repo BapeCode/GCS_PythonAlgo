@@ -1,8 +1,8 @@
 from classes.Products.productsManager import ProductsManager
-from classes.Products.products import Product
-from classes.Auth.usersManager import UsersManager
+from classes.Users.usersManager import UsersManager
 import os
 import termcolor
+
 
 class GestionixApp:
 
@@ -37,7 +37,6 @@ class GestionixApp:
             print(termcolor.colored("3.", "red"), "Exit")
 
             return input("Enter your choice :")
-
 
     def run(self):
         os.system('clear')
@@ -77,7 +76,9 @@ class GestionixApp:
                         self.users_manager.delete_user()
             else:
                 if choise == "1":
-                    self.user_connected= self.users_manager.login()
+                    username = input("Enter username : ")
+                    password = input("Enter password : ")
+                    self.user_connected= self.users_manager.login(username, password)
                     if (self.user_connected):
                         self.users_manager.reload_data()
                         os.system('clear')
