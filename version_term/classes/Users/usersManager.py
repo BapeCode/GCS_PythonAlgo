@@ -1,7 +1,8 @@
 from utils.fileManager import FileManager
 from .users import Users
 import hashlib
-import requests
+import requests 
+
 
 class UsersManager:
     USERS_FILE = "./data/users.csv"
