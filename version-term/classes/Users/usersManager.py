@@ -1,7 +1,7 @@
 from utils.fileManager import FileManager
 from .users import Users
 import hashlib
-
+import requests
 
 class UsersManager:
     USERS_FILE = "./data/users.csv"
@@ -51,27 +51,55 @@ class UsersManager:
                     print(f"Welcome {user.username}")
                     return user
                 else:
-                    print("Your identifiant or password is incorrect.")
+                    print("Your username or password is incorrect.")
 
-    def verify_password(self, password):
-        self.password = password
-        with open ('./data/rockyou_md5.txt', mode ='r', encoding='UTF-8') as file: 
-            common_passwords = [line.strip() for line in file]
-            return self.password in common_passwords 
+    def verify_password_hibp(self, password):
         
+        sha1_password = hashlib.sha1(password.encode()).hexdigest().upper()
+        prefix = sha1_password[:5]
+        suffix = sha1_password[5:]
+
+        
+        url = f"https://api.pwnedpasswords.com/range/{prefix}"
+        response = requests.get(url, timeout=20, headers={'User-Agent': 'Gestionix/1.0'})
+        response.raise_for_status()
+
+        
+        for line in response.text.splitlines():
+            leaked_suffix, _ = line.split(':')
+            if leaked_suffix == suffix:
+                return True
+
+        return False
+
+    def verify_password_local(self, password):
+        
+        with open('./data/rockyou_md5.txt', mode='r', encoding='UTF-8') as file:
+            common_passwords = [line.strip() for line in file]
+            
+            hashed_password = hashlib.md5(password.encode()).hexdigest()
+            return hashed_password in common_passwords
+
     def register(self):
         username = input("Enter Username: ")
-        password = input("Enter password: ")
-        email = input("Enter email: ")
+        email = input("Enter Email: ")
 
-        password = hashlib.md5(password.encode()).hexdigest()
-        self.verify_password(password)
+        
+        while True:
+            password = input("Enter password: ")
 
-        while self.verify_password(password):
-            print("Password compromised. Try again.")
-            password = input("Enter password: ").lower()
-            password = hashlib.md5(password.encode()).hexdigest()
-        user = Users(username, password, email, "member")
+            
+            if self.verify_password_hibp(password):
+                print("Password found in public breaches (HIBP). Try a different one.")
+                continue
+
+            if self.verify_password_local(password):
+                print("Password is too common (rockyou). Try a different one.")
+                continue
+
+        hashed_password = hashlib.md5(password.encode()).hexdigest()
+
+        user = Users(username, hashed_password, email, "member")
         self.users.append(user)
         self.save_users()
         print(f"User '{username}' added successfully.")
