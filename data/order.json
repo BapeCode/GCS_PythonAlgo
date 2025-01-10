@@ -1,0 +1,20 @@
+[
+  {
+    "customer": "Ali",
+    "productName": "iPhone",
+    "productQuantity": 5,
+    "productPrice": 99.9,
+    "date": "08/01/2025 - 12:56",
+    "status": "Processed",
+    "commercial": "Mathieu"
+  },
+  {
+    "customer": "Merwan",
+    "productName": "MacBook Air",
+    "productQuantity": 5,
+    "productPrice": 99.9,
+    "date": "08/01/2025 - 12:56",
+    "status": "in await",
+    "commercial": "Ali"
+  }
+]

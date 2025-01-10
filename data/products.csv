@@ -1,2 +1,7 @@
-Name,Price,Stock,Date
-Bread,2,20,16-12-2024-9-58-49
+Name,Price,Stock,Date,User
+MacBook Air,1229.0,5,7/1/2025 - 11:40,Mathieu
+Bread,1.0,5,8/1/2025 - 11:49,Ali
+Madeleine,1.1,5,8/1/2025 - 9:6,Mathieu
+Souris,10.0,5,9/1/2025 - 9:13,Mathieu
+AirPods Max,579.0,10,9/1/2025 - 9:57,Mathieu
+iPhone,1200.0,15,9/1/2025 - 10:55,Mathieu

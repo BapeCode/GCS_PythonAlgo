@@ -1,14 +1,12 @@
 <RCC>
-  <qresource prefix="user">
-    <file>user.png</file>
-  </qresource>
-  <qresource prefix="close">
-    <file>close.png</file>
-  </qresource>
   <qresource prefix="background">
-    <file>background.jpg</file>
+    <file>background_principal.png</file>
+    <file>background_sub.png</file>
   </qresource>
-  <qresource prefix="password">
-    <file>password.png</file>
+  <qresource prefix="Icons">
+    <file>close.svg</file>
+    <file>add.svg</file>
+    <file>search.svg</file>
+    <file>sort.svg</file>
   </qresource>
 </RCC>
