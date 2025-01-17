@@ -1,3 +1,14 @@
 Username,Password,Email,Group
+<<<<<<< Updated upstream
 Mathieu,b0edab526958b470e1448d5046ffefd7,mathieu@gmail.com,member
 Alizée,676f322ee5aeba3e6d7e8f20f43823f4,Ali@gmail.com,member
+=======
+Mathieu,21232f297a57a5a743894a0e4a801fc3,mathieu@example.com,admin
+Ali,21232f297a57a5a743894a0e4a801fc3,ali@example.com,member
+George,81dc9bdb52d04dc20036dbd8313ed055,George@example.com,member
+Chloe,81dc9bdb52d04dc20036dbd8313ed055,Chloe@example.com,member
+Chloe,81dc9bdb52d04dc20036dbd8313ed055,Chloe@example.com,member
+Chloe,81dc9bdb52d04dc20036dbd8313ed055,chloe@example.com,member
+Test@gmail.com,15fa970ed71e9321015da4719bad6dcd,test,member
+taha@gmail.com,5c5d3cdd427f24d185443edbaa6220e4,taha,member
+>>>>>>> Stashed changes

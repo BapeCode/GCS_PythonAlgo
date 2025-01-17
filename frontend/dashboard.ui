@@ -10,10 +10,17 @@
     <height>592</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>0</width>
+    <height>5</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>Gestionix - Dashboard</string>
   </property>
   <property name="styleSheet">
+<<<<<<< Updated upstream
    <string notr="true">QFrame {
 	border: none;
 }
@@ -39,6 +46,58 @@ QLineEdit {
     <property name="bottomMargin">
      <number>0</number>
     </property>
+=======
+   <string notr="true">QMainWindow {
+	background-image: url(:/background/background_principal.png);
+}
+
+QLabel {
+	color: black
+}
+
+QGroupBox {
+	color: black;
+	background-color: rgba(245, 245, 245, 0.8);
+	border-radius: 5px;
+	padding: 10px
+}
+
+QScrollArea {
+	background-color: rgba(245, 245, 245, 0.8);
+}
+
+#scrollAreaWidgetContents {
+	background-color: rgba(245, 245, 245, 0.8);
+}
+
+#title {
+	color: #400b97
+}
+
+QPushButton {
+	background-color: #400b97;
+	color: white;
+	border: none;
+	border-radius: 10px
+}
+
+QPushButton:hover,
+QPushButton:clicked {
+	background-color: #400baa;
+}
+
+QScrollArea {
+	border-radius: 12px;
+}
+
+QCombotBox {
+	color: black;
+	background-color: #400baa
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout_5">
+>>>>>>> Stashed changes
     <item>
      <widget class="QFrame" name="home">
       <property name="frameShape">
@@ -106,7 +165,33 @@ QLineEdit {
          </property>
          <layout class="QVBoxLayout" name="verticalLayout">
           <item>
+<<<<<<< Updated upstream
            <widget class="QLabel" name="label">
+=======
+           <widget class="QPushButton" name="settingsButton">
+            <property name="minimumSize">
+             <size>
+              <width>100</width>
+              <height>25</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>150</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="text">
+             <string>Settings</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="title">
+>>>>>>> Stashed changes
             <property name="font">
              <font>
               <pointsize>50</pointsize>
@@ -120,6 +205,31 @@ QLineEdit {
             </property>
            </widget>
           </item>
+<<<<<<< Updated upstream
+=======
+          <item>
+           <widget class="QPushButton" name="logoutButton">
+            <property name="minimumSize">
+             <size>
+              <width>100</width>
+              <height>25</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>150</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="text">
+             <string>Logout</string>
+            </property>
+           </widget>
+          </item>
+>>>>>>> Stashed changes
          </layout>
         </widget>
        </item>
@@ -145,16 +255,79 @@ QLineEdit {
             <property name="text">
              <string>Sort stock</string>
             </property>
+<<<<<<< Updated upstream
            </item>
            <item>
             <property name="text">
              <string>Price</string>
+=======
+            <layout class="QHBoxLayout" name="horizontalLayout_2">
+             <item>
+              <widget class="QPushButton" name="addButton">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="text">
+                <string>Add Products</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="sortButton">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="text">
+                <string>Sort Products</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="searchButton">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="text">
+                <string>Search Products</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QWidget" name="content" native="true">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+>>>>>>> Stashed changes
             </property>
            </item>
            <item>
             <property name="text">
              <string>Name</string>
             </property>
+<<<<<<< Updated upstream
            </item>
            <item>
             <property name="text">
@@ -221,6 +394,174 @@ QLineEdit {
            <string>Options</string>
           </property>
          </column>
+=======
+            <layout class="QVBoxLayout" name="verticalLayout_4">
+             <item>
+              <layout class="QHBoxLayout" name="infosContainer">
+               <item>
+                <widget class="QLabel" name="nameLabel">
+                 <property name="text">
+                  <string>Name</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="priceLabel">
+                 <property name="text">
+                  <string>Price</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="stockLabel">
+                 <property name="text">
+                  <string>Stock</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="dateLabel">
+                 <property name="text">
+                  <string>Date</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="actionLabel">
+                 <property name="text">
+                  <string>Action</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="Line" name="line">
+               <property name="orientation">
+                <enum>Qt::Orientation::Horizontal</enum>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QScrollArea" name="scrollArea">
+               <property name="widgetResizable">
+                <bool>true</bool>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignJustify|Qt::AlignmentFlag::AlignTop</set>
+               </property>
+               <widget class="QWidget" name="scrollAreaWidgetContents">
+                <property name="geometry">
+                 <rect>
+                  <x>0</x>
+                  <y>0</y>
+                  <width>784</width>
+                  <height>208</height>
+                 </rect>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_2">
+                 <property name="leftMargin">
+                  <number>5</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>3</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>5</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>3</number>
+                 </property>
+                 <item>
+                  <widget class="QWidget" name="containerItems" native="true">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>50</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>50</height>
+                    </size>
+                   </property>
+                   <layout class="QHBoxLayout" name="horizontalLayout_3">
+                    <property name="leftMargin">
+                     <number>5</number>
+                    </property>
+                    <property name="topMargin">
+                     <number>3</number>
+                    </property>
+                    <property name="rightMargin">
+                     <number>5</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>3</number>
+                    </property>
+                    <item>
+                     <widget class="QLabel" name="label_4">
+                      <property name="text">
+                       <string>Bread</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="label">
+                      <property name="text">
+                       <string>2,3€</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="label_5">
+                      <property name="text">
+                       <string>x20</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="label_6">
+                      <property name="text">
+                       <string>03/12/2000 - 09:20</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QComboBox" name="comboBox">
+                      <item>
+                       <property name="text">
+                        <string>Supprimer</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>Modifier</string>
+                       </property>
+                      </item>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+>>>>>>> Stashed changes
         </widget>
        </item>
       </layout>
