@@ -6,14 +6,8 @@ from .home_ui import Ui_MainWindow
 from ..login_view.login import LoginWindows
 from ..register_view.register import RegisterWindows
 from typing import Type
-<<<<<<< Updated upstream:application/home_view/home.py
 from ..classes.Users.usersManager import UsersManager
 from ..classes.Products.productsManager import ProductsManager
-=======
-from ..Users.usersManager import UsersManager
-from ..Products.productsManager import ProductsManager
->>>>>>> Stashed changes:version_ui/classes/App/home.py
-
 
 class HomeWindow(QMainWindow):
     def __init__(self, UserManager: Type[UsersManager], ProductManager: Type[ProductsManager]):
@@ -32,11 +26,7 @@ class HomeWindow(QMainWindow):
         self.ui.exitButton.clicked.connect(self.exit)
 
     def login(self):
-<<<<<<< Updated upstream:application/home_view/home.py
         self.login_window = LoginWindows(self.user_manager, self.product_manager, self)
-=======
-        self.login_window = LoginWindows(self.user_manager, self.product_manager)
->>>>>>> Stashed changes:version_ui/classes/App/home.py
         self.login_window.show()
         self.hide()
 
