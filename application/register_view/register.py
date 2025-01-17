@@ -25,13 +25,13 @@ class RegisterWindows(QMainWindow):
         password = self.ui.passwordButton.text()
 
         if (email == "" or username == "" or password == ""):
-            self.ui.message.setText("Please fill all fields")
+            self.ui.succes.setText("Please fill all fields")
         else:
-            if (self.UserManager.register(email, username, password)):
+            if (self.UserManager.register(username, email, password)):
                 console.success(f"New user has been created '{username}'")
-                self.ui.message.setText("Welcome")
+                self.ui.succes.setText("Welcome")
             else:
-                self.ui.message.setText("Password is too weak. Please choose a stronger password.")
+                self.ui.succes.setText("Password is too weak. Please choose a stronger password.")
 
     def cancel(self):
         console.warn("Register canceled")

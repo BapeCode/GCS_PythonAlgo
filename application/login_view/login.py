@@ -31,6 +31,7 @@ class LoginWindows(QMainWindow):
         else:
             Users = self.UserManager.login(username, password)
             if Users:
+                print(Users)
                 self.dashboard_window = DashBoard_Windows(Users, self.ProductManager, self.HomeWindow)
                 self.dashboard_window.show()
                 self.hide()

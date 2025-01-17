@@ -128,13 +128,32 @@ class ProductsManager:
         return False
 
     def change_status_order(self, status, order):
+        print(status)
         for data in self.order:
             if (status == "Processed"):
                 if data.name == order.name:
                     data.status = "Processed"
                     self.save_order()
+
+            elif status == "In await":
+                if data.name == order.name:
+                    data.status = "In await"
+                    self.save_order()
             
             elif status == "Cancel":
+                print("CANCELED")
                 if data.name == order.name:
-                    data = {}
-                    self.save_order()
+                    self.order = [data for data in self.order if data.name != order.name]
+                    # Mettre à jour le fichier JSON
+                    with open(self.ORDER_FILE, "r") as file:
+                        orders = json.load(file)
+                    # Filtrer les commandes dans le fichier JSON
+                    updated_orders = [
+                        order_data for order_data in orders 
+                        if not (order_data['productName'] == order.name and 
+                            order_data['customer'] == order.customer and 
+                            order_data['date'] == order.date)
+                    ]
+                    # Sauvegarder le fichier mis à jour
+                    with open(self.ORDER_FILE, "w") as file:
+                        json.dump(updated_orders, file, indent=2)

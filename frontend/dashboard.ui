@@ -244,8 +244,8 @@ QLineEdit {
     <property name="title">
      <string>File</string>
     </property>
-    <addaction name="actionExport_PDF"/>
-    <addaction name="actionExport_CSV"/>
+    <addaction name="myAccounts"/>
+    <addaction name="action"/>
     <addaction name="separator"/>
     <addaction name="actionLogout"/>
     <addaction name="actionExit"/>
@@ -264,12 +264,12 @@ QLineEdit {
     <enum>QAction::MenuRole::NoRole</enum>
    </property>
   </action>
-  <action name="actionExport_PDF">
+  <action name="myAccounts">
    <property name="text">
-    <string>Export PDF</string>
+    <string>My account</string>
    </property>
   </action>
-  <action name="actionExport_CSV">
+  <action name="action">
    <property name="text">
     <string>Export CSV</string>
    </property>

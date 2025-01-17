@@ -4,7 +4,6 @@ from PySide6.QtWidgets import *
 from .dashboard_ui import Ui_Dashboard
 from ..classes.tools.console import console
 from ..add_products_view.addProducts import AddWindows
-from ..popup_view.popup import Popup_Window
 from ..pdf_view.pdf_view import PdfPreviewDialog
 import sys
 
@@ -153,6 +152,7 @@ class DashBoard_Windows(QMainWindow):
 
         if (productExit):
             self.productManager.change_status_order(action, order)
+            self.view_order(self.productManager.load_)
         else:
             console.debug("You can't")
             QMessageBox.warning(self, "Attention", "You can't because this product has not any more in the stock.")
@@ -166,7 +166,7 @@ class DashBoard_Windows(QMainWindow):
         console.debug(f"{self.Users.username} has been logout.")
         self.HomeWindow.show()
         self.hide()
-        self.USers = None
+        self.Users = None
         
     def addProducts(self):
         self.add_window = AddWindows(self.Users, self.productManager, self.view_products)

@@ -36,10 +36,6 @@ class Ui_Dashboard(object):
         self.actionuserAccounts = QAction(Dashboard)
         self.actionuserAccounts.setObjectName(u"actionuserAccounts")
         self.actionuserAccounts.setMenuRole(QAction.MenuRole.NoRole)
-        self.actionExport_PDF = QAction(Dashboard)
-        self.actionExport_PDF.setObjectName(u"actionExport_PDF")
-        self.actionExport_CSV = QAction(Dashboard)
-        self.actionExport_CSV.setObjectName(u"actionExport_CSV")
         self.actionLogout = QAction(Dashboard)
         self.actionLogout.setObjectName(u"actionLogout")
         self.actionExit = QAction(Dashboard)
@@ -172,9 +168,6 @@ class Ui_Dashboard(object):
         Dashboard.setMenuBar(self.menubar)
 
         self.menubar.addAction(self.menuFile.menuAction())
-        self.menuFile.addAction(self.actionExport_PDF)
-        self.menuFile.addAction(self.actionExport_CSV)
-        self.menuFile.addSeparator()
         self.menuFile.addAction(self.actionLogout)
         self.menuFile.addAction(self.actionExit)
 
@@ -186,8 +179,6 @@ class Ui_Dashboard(object):
     def retranslateUi(self, Dashboard):
         Dashboard.setWindowTitle(QCoreApplication.translate("Dashboard", u"Gestionix - Dashboard", None))
         self.actionuserAccounts.setText(QCoreApplication.translate("Dashboard", u"userAccounts", None))
-        self.actionExport_PDF.setText(QCoreApplication.translate("Dashboard", u"Export PDF", None))
-        self.actionExport_CSV.setText(QCoreApplication.translate("Dashboard", u"Export CSV", None))
         self.actionLogout.setText(QCoreApplication.translate("Dashboard", u"Logout", None))
         self.actionExit.setText(QCoreApplication.translate("Dashboard", u"Exit", None))
         self.label_2.setText(QCoreApplication.translate("Dashboard", u"Products List", None))

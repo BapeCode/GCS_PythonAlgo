@@ -25,6 +25,8 @@ class AddWindows(QMainWindow):
         productName = str(self.ui.productLine.text())
         productQuantity = int(self.ui.stockBox.text())
         productPrice = float(self.ui.priceBox.text().replace(',', '.'))
+        
+        print(self.User.username)
 
         self.ProductManager.add_product(productName, productPrice, productQuantity, self.User.username)
         self.view(self.ProductManager.load_products(self.User.username))
